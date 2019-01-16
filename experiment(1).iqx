@@ -1,0 +1,181 @@
+﻿<item introl2>
+/1="接下来屏幕中央将呈现一个人名，两侧呈现职业，请判断该名字更可能是哪一个职业，如果是左侧，请按F键；如果是右侧，请按J键"
+</item>
+
+<item any>
+/1="请按任意键继续"
+</item>
+
+<item malejob>
+/1= "工程师"
+/2= "司机"
+/3= "建筑师"
+/4= "警察"
+/5= "保安"
+/6= "工人"
+/7= "快递员"
+/8= "飞行员"
+/9= "程序员"
+/10= "修理工"
+</item>
+
+<item malename>
+/1= "赵强"
+/2= "丁勇"
+/3= "刘军"
+/4= "赵虎"
+/5= "程大力"
+/6= "汪松"
+/7= "李健"
+/8= "张飞"
+/9= "吴刚"
+/10="陈磊"
+</item>
+
+<item femalejob>
+/1= "护士"
+/2= "秘书"
+/3= "会计"
+/4= "乘务员"
+/5= "幼师"
+/6= "保姆"
+/7= "美容师"
+/8= "收银员"
+/9= "导游"
+/10="导购"
+</item>
+
+<item femalename>
+/1= "刘娟"
+/2= "江丽"
+/3= "王娜"
+/4= "李莎"
+/5= "丁霞"
+/6= "汪艳"
+/7= "肖蓓"
+/8= "胡艳艳"
+/9= "朱燕"
+/10="张萍"
+</item>
+
+<text introl2txt>
+/items = introl2
+/fontstyle = ("宋体",3.5%)
+/txcolor = (255,0,0)
+/txbgcolor = (0,0,0)
+/size = (50%,30%)
+</text>
+
+<text anytxt>
+/items = any
+/fontstyle = ("宋体",3.5%)
+/txcolor = (255,0,0)
+/txbgcolor = (0,0,0)
+/vposition = 70%
+</text>
+
+
+<text malenametxt>
+/items = malename
+/fontstyle = ("宋体",5%)
+</text>
+
+<text femalenametxt>
+/items = femalename
+/fontstyle = ("宋体",5%)
+</text>
+
+<text fix>
+/items = ("+")
+/txcolor = (255,255,255)
+/fontstyle = ("宋体",5%)
+/txbgcolor = (255,0,0)
+</text>
+
+<text femalejoblefttxt>
+/items = femalejob
+/valign=top
+/halign = left
+/position = (5%,5%)
+/fontstyle=("宋体",60ptc)
+/txcolor=(255,0,0)
+</text>
+
+<text femalejobrighttxt>
+/items = femalejob
+/fontstyle=("宋体",60ptc)
+/txcolor=(255,0,0)
+/valign=top
+/halign = right
+/position = (95%,5%)
+</text>
+
+
+<text malejoblefttxt>
+/items = malejob
+/fontstyle=("宋体",60ptc)
+/txcolor=(255,0,0)
+/valign=top
+/halign = left
+/position = (5%,5%)
+</text>
+
+<text malejobrighttxt>
+/items = malejob
+/fontstyle=("宋体",60ptc)
+/txcolor=(255,0,0)
+/valign=top
+/halign = right
+/position = (95%,5%)
+</text>
+
+
+<values>
+/fixationtime = 0
+</values>
+
+<expressions>
+/generaterandom = ceil(rand(400,600))
+</expressions>
+
+
+<trial ffemaleleft>
+/validresponse = ("F","J")
+/correctresponse = ("F")
+/stimulusframes = [1 = femalenametxt,femalejoblefttxt,malejobrighttxt]
+/posttrialpause = 250
+</trial>
+
+<trial mfemaleleft>
+/validresponse = ("F","J")
+/correctresponse = ("J")
+/stimulusframes = [1 = malenametxt,femalejoblefttxt,malejobrighttxt]
+/posttrialpause = 250
+</trial>
+
+<trial ffemaleright>
+/validresponse = ("F","J")
+/correctresponse = ("J")
+/stimulusframes = [1 = femalenametxt,femalejobrighttxt,malejoblefttxt]
+/posttrialpause = 250
+</trial>
+
+<trial mfemaleright>
+/validresponse = ("F","J")
+/correctresponse = ("F")
+/stimulusframes = [1 = malenametxt,femalejobrighttxt,malejoblefttxt]
+/posttrialpause = 250
+</trial>
+
+<trial introl2trl>
+/stimulusframes = [1=introl2txt,anytxt]
+/validresponse = (anyresponse)
+/recorddata = false
+</trial>
+
+
+<block sumary>
+/screencolor = (0,0,0)
+/trials = [1=introl2trl;2-21 = random(ffemaleleft,ffemaleright,mfemaleleft,mfemaleright)]
+</block>
+
